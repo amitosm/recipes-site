@@ -44,7 +44,6 @@ app.use(
     },
   })
 );
-app.use(express.static(path.resolve(__dirname, "../frontend/build")));
 
 
 //seassion initialize 
@@ -52,15 +51,22 @@ require("./src/config/auth.config");
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(express.static(path.resolve(__dirname, "../frontend/build")));
+
 
 // routes
 app.use("/api", apiRouter);
 app.use("/db", dbRouter);
 app.use("/auth", authRouter);
 
+
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, "..", "frontend", "build", "index.html"));
 // });
+
+app.get('*', function (req, res) {
+  res.sendFile(path.resolve(__dirname) + '/server/static/index.html');
+});
 
 
 // connection
