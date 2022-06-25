@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const path = require("path");
 const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -44,6 +44,8 @@ app.use(
     },
   })
 );
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+
 
 //seassion initialize 
 require("./src/config/auth.config");
@@ -56,9 +58,9 @@ app.use("/api", apiRouter);
 app.use("/db", dbRouter);
 app.use("/auth", authRouter);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "frontend", "build", "index.html"));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, "..", "frontend", "build", "index.html"));
+// });
 
 
 // connection
