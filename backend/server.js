@@ -56,6 +56,10 @@ app.use("/api", apiRouter);
 app.use("/db", dbRouter);
 app.use("/auth", authRouter);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+});
+
 
 // connection
 mongoose.connection.once("open", () => {
