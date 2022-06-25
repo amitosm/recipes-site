@@ -11,7 +11,6 @@ function useSearchRecipes() {
 
   useEffect(() => {
     // alert the user when needed
-    console.log("use search:", message);
     if (message === "Logged in!") {
       notify("success", message);
       dispatch(setMessage({ message: "" }));
