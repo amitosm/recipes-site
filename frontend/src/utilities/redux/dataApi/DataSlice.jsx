@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const BASE_URL = process.env.REACT_APP_URL;
+
 export const fetchCategories = createAsyncThunk("api/categories", async () => {
   const response = await axios({
     method: "get",
@@ -8,7 +10,7 @@ export const fetchCategories = createAsyncThunk("api/categories", async () => {
       "Content-Type": "application/json",
     },
     withCredentials: true,
-    url: "http://localhost:5000/api/categories",
+    url: `${BASE_URL}/api/categories`,
   });
   return response.data;
 });
@@ -22,7 +24,7 @@ export const fetchMealsByCategory = createAsyncThunk(
         "Content-Type": "application/json",
       },
       withCredentials: true,
-      url: `http://localhost:5000/api/meals/${args}`,
+      url: `${BASE_URL}/api/meals/${args}`,
     });
     return response.data;
   }
@@ -35,7 +37,7 @@ export const fetchMealById = createAsyncThunk("api/mealById", async (args) => {
       "Content-Type": "application/json",
     },
     withCredentials: true,
-    url: `http://localhost:5000/api/meal/${args}`,
+    url: `${BASE_URL}/api/meal/${args}`,
   });
   return response.data;
 });
@@ -47,7 +49,7 @@ export const freeSearch = createAsyncThunk("api/freeSearch", async (args) => {
       "Content-Type": "application/json",
     },
     withCredentials: true,
-    url: `http://localhost:5000/api/freeSearch/${args}`,
+    url: `${BASE_URL}/api/freeSearch/${args}`,
   });
   return response.data;
 });
@@ -61,7 +63,7 @@ export const searchByLetter = createAsyncThunk(
         "Content-Type": "application/json",
       },
       withCredentials: true,
-      url: `http://localhost:5000/api/lettersSearch/${args}`,
+      url: `${BASE_URL}/api/lettersSearch/${args}`,
     });
     return response.data;
   }

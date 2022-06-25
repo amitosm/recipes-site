@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const BASE_URL = process.env.REACT_APP_URL;
+
 export const checkIsAuth = createAsyncThunk("auth/checkIsAuth", async () => {
   const response = await axios({
     method: "get",
@@ -8,7 +10,7 @@ export const checkIsAuth = createAsyncThunk("auth/checkIsAuth", async () => {
       "Content-Type": "application/json",
     },
     withCredentials: true,
-    url: "http://localhost:5000/auth/check-auth",
+    url: `${BASE_URL}/auth/check-auth`,
   });
   return response.data;
 });
@@ -21,7 +23,7 @@ export const login = createAsyncThunk("login", async (args) => {
     },
     withCredentials: true,
     data: args,
-    url: "http://localhost:5000/auth/login",
+    url: `${BASE_URL}/auth/login`,
   }).catch((err) => {
     if (err.response) {
       return Promise.reject("Wrong username or password.");
@@ -40,7 +42,7 @@ export const logout = createAsyncThunk("logout", async () => {
       "Content-Type": "application/json",
     },
     withCredentials: true,
-    url: "http://localhost:5000/auth/logout",
+    url: `${BASE_URL}/auth/logout`,
   });
   return res.data;
 });
@@ -53,7 +55,7 @@ export const register = createAsyncThunk("register", async (args) => {
     },
     withCredentials: true,
     data: args,
-    url: "http://localhost:5000/db/addUser",
+    url: `${BASE_URL}/db/addUser`,
   }).catch((err) => {
     if (err.response) {
       return { data: { message: err.response.data.message } };
@@ -73,7 +75,7 @@ export const addFavorites = createAsyncThunk("addFavorites", async (args) => {
     },
     withCredentials: true,
     data: { favorites: args.mealId, meal: args.meal },
-    url: "http://localhost:5000/db/addFavorite",
+    url: `${BASE_URL}/db/addFavorite`,
   }).catch((err) => {
     if (err.response) {
       return { data: { message: err.response.data.message } };
@@ -95,7 +97,7 @@ export const removeFavorites = createAsyncThunk(
       },
       withCredentials: true,
       data: { favorites: args.mealId, meal: args.meal },
-      url: "http://localhost:5000/db/removeFavorite",
+      url: `${BASE_URL}/db/removeFavorite`,
     }).catch((err) => {
       if (err.response) {
         return { data: { message: err.response.data.message } };
@@ -115,7 +117,7 @@ export const fetchFavorites = createAsyncThunk("fetchFavorites", async () => {
       "Content-Type": "application/json",
     },
     withCredentials: true,
-    url: "http://localhost:5000/db/getAllFavorites",
+    url: `${BASE_URL}/db/getAllFavorites`,
   });
   return response.data;
 });
