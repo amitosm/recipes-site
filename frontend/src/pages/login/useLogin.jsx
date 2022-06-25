@@ -14,8 +14,6 @@ function useLogin() {
   });
 
   useEffect(() => {
-    console.log(message, "validation msg:", validationMsg);
-
     if (status === "rejected") {
       setValidationMsg(message);
     }
@@ -34,7 +32,6 @@ function useLogin() {
   };
 
   const dispatchLogin = (form) => {
-    // console.log(checkFilledInputs(userForm))
     if (checkFilledInputs(userForm)) {
       dispatch(login(form));
     }

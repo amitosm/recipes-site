@@ -111,7 +111,7 @@ function Sidebar({ setNewSearch, activeSearch }) {
           justifySelf: "end",
         }}
       >
-        <SearchIcon />
+        <SearchIcon sx={{ cursor: "pointer" }} />
       </IconButton>
       {/* Mobile drawer */}
       <Drawer

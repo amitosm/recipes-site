@@ -19,10 +19,6 @@ function AddRecipie() {
     strMeasure: [],
   });
 
-  //   useEffect(() => {
-  //     console.log(form);
-  //   }, []);
-
   return (
     <Box>
       <Container sx={{ py: 10 }} maxWidth="sm">

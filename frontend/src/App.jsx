@@ -7,10 +7,11 @@ import Recipie from "./pages/RecipePage.jsx/Recipie";
 import FilterByCategory from "./pages/FilterByCategory/FilterByCategory";
 import Register from "./pages/register/Register";
 import MyRecipes from "./pages/myRecipes/MyRecipes";
+import { Box } from "@mui/material";
 
 export default function App() {
   return (
-    <div>
+    <Box sx={{ height: "100vh", overflowY: "scroll" }}>
       <Router>
         <Navbar />
         <Routes>
@@ -26,6 +27,6 @@ export default function App() {
           <Route path="/myRecipes/:username" element={<MyRecipes />}></Route>
         </Routes>
       </Router>
-    </div>
+    </Box>
   );
 }
