@@ -44,7 +44,7 @@ app.use(
     },
   })
 );
-app.use(express.static(path.resolve(__dirname, "./frontend/build")));
+app.use(express.static(path.resolve(__dirname, "../frontend/build")));
 
 
 //seassion initialize 
