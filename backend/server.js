@@ -3,14 +3,13 @@ require('dotenv').config();
 const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
-const connectMongo = require("./config/mongoose.config")
+const connectMongo = require("./src/config/mongoose.config")
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const passport = require("passport");
-
-const apiRouter = require("./routes/api.route");
-const dbRouter = require("./routes/db.route");
-const authRouter = require("./routes/auth.route");
+const apiRouter = require("./src/routes/api.route");
+const dbRouter = require("./src/routes/db.route");
+const authRouter = require("./src/routes/auth.route");
 
 connectMongo();
 
@@ -47,7 +46,7 @@ app.use(
 );
 
 //seassion initialize 
-require("./config/auth.config");
+require("./src/config/auth.config");
 app.use(passport.initialize());
 app.use(passport.session());
 

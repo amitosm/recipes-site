@@ -2,9 +2,9 @@
   "name": "recipes-site",
   "version": "1.0.0",
   "description": "",
-  "main": "backend/src/app.js",
+  "main": "backend/server.js",
   "scripts": {
-    "start": "node backend/src/server.js",
+    "start": "node backend/server.js",
     "heroku-postbuild": "cd frontend && npm install && npm run build && cd .. && cd backend && npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,6 +16,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/amitosm/recipes-site/issues"
+  },
+  "engines": {
+    "node": "16.15.0"
   },
   "homepage": "https://github.com/amitosm/recipes-site#readme"
 }
