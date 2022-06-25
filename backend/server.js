@@ -57,7 +57,7 @@ app.use("/db", dbRouter);
 app.use("/auth", authRouter);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "frontend", "build", "index.html"));
 });
 
 
