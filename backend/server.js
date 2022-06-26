@@ -65,7 +65,7 @@ app.use("/auth", authRouter);
 // });
 
 app.get('*', function (req, res) {
-  res.sendFile(path.resolve(__dirname) + '/server/static/index.html');
+  res.sendFile(path.resolve(__dirname) + '../frontend/build/index.html');
 });
 
 
