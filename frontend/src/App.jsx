@@ -32,15 +32,13 @@ export default function App() {
               path="category/:categoryName"
               element={<FilterByCategory />}
             ></Route>
+            <Route path="meal/:mealId" element={<Recipie />}></Route>
           </Route>
 
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/favorites" element={<Favorites />}></Route>
-          {/* <Route
-            path="/category/:categoryName"
-            element={<FilterByCategory />}
-          ></Route> */}
+
           <Route path="/meal/:mealId" element={<Recipie />}></Route>
           <Route path="/myRecipes/:username" element={<MyRecipes />}></Route>
 

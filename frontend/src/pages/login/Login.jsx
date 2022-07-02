@@ -1,5 +1,18 @@
-import { Button, Typography } from "@mui/material";
+import {
+  Paper,
+  Avatar,
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Grid,
+  TextField,
+  Typography,
+  CssBaseline,
+} from "@mui/material";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 import React from "react";
+import { Link } from "react-router-dom";
 import InputAndLabel from "../../components/InputAndLabel";
 import useLogin from "./useLogin";
 
@@ -12,30 +25,91 @@ export default function Login() {
   }
 
   return (
-    <div className="login-container">
-      {validationMsg ? <Typography>{validationMsg}</Typography> : null}
-      <InputAndLabel
-        styles={{ marginTop: 2 }}
-        label="Username"
-        color={"secondary"}
-        value={userForm.username}
-        handleChange={handleInputChange}
+    <Grid container component="main" sx={{ height: "100vh" }}>
+      <CssBaseline />
+      {/* image for desktop */}
+      <Grid
+        item
+        xs={false}
+        sm={4}
+        md={7}
+        sx={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1623073284788-0d846f75e329?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Z291cm1ldCUyMGZvb2R8ZW58MHx8MHx8&w=1000&q=80)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       />
-      <InputAndLabel
-        styles={{ marginTop: 2 }}
-        label="Password"
-        color={"secondary"}
-        value={userForm.password}
-        handleChange={handleInputChange}
-        inputType="password"
-      />
-      <Button
-        variant="contained"
-        color="secondary"
-        onClick={() => dispatchLogin(userForm)}
-      >
-        Login
-      </Button>
-    </div>
+
+      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Box
+          sx={{
+            my: 8,
+            mx: 4,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {/* icon */}
+          <Avatar sx={{ m: 1, bgcolor: "secondary" }}>
+            <LockOpenIcon />
+          </Avatar>
+          {/* header */}
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          {/* form itself */}
+          <Box
+            component="form"
+            noValidate
+            // onSubmit={handleSubmit}
+            sx={{ mt: 1 }}
+          >
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="Username"
+              name="username"
+              value={userForm.username}
+              onChange={(e) => handleInputChange("username", e.target.value)}
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              value={userForm.password}
+              onChange={(e) => handleInputChange("password", e.target.value)}
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            {/* error msg if needed */}
+            {validationMsg ? (
+              <Typography color={"error"}>{validationMsg}</Typography>
+            ) : null}
+
+            {/* submit action */}
+            <Button
+              onClick={() => dispatchLogin(userForm)}
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+          </Box>
+        </Box>
+      </Grid>
+    </Grid>
   );
 }

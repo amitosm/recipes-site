@@ -15,7 +15,8 @@ function useFilterByCategory() {
   }, []);
 
   const handleClickOnMeal = (mealId) => {
-    return navigate(`/meal/${mealId}`);
+    // return navigate(`/meal/${mealId}`);
+    navigate(`../../search/meal/${mealId}`);
   };
 
   const preContentList = [

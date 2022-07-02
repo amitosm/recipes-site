@@ -31,6 +31,11 @@ function useLogin() {
     setUserForm((state) => ({ ...state, [prop]: value }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDegault();
+    dispatchLogin(userForm);
+  };
+
   const dispatchLogin = (form) => {
     if (checkFilledInputs(userForm)) {
       dispatch(login(form));

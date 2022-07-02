@@ -14,10 +14,10 @@ function useSearchByFreeText() {
       // prevent unnecessary fetch
       dispatch(freeSearch(param));
     }
-  }, []);
+  }, [param]);
 
   const handleRecipeClick = (mealId) => {
-    return navigate(`/meal/${mealId}`);
+    navigate(`../../search/meal/${mealId}`);
   };
   return { status, currentSearch, handleRecipeClick };
 }
