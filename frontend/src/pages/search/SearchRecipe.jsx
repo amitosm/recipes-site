@@ -7,7 +7,7 @@ import SearchByFreeText from "./SearchByFreeText/SearchByFreeText";
 import useSearchRecipes from "./useSearchRecipes";
 
 function Search({ initSearch = "category" }) {
-  const { message } = useSearchRecipes();
+  useSearchRecipes();
   const [activeSearch, setActiveSearch] = useState({
     activeSearch: initSearch,
     textInputVal: "",

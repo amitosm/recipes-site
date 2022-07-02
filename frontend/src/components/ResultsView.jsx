@@ -7,7 +7,11 @@ function ResultsView({ header = null, meals, handleClickOnMeal }) {
     <Box>
       {/* header */}
       {header ? (
-        <Typography component="div" variant="h3">
+        <Typography
+          sx={{ width: "80%", mb: 2, textAlign: "center" }}
+          component="div"
+          variant="h3"
+        >
           {header}
         </Typography>
       ) : null}
@@ -15,6 +19,9 @@ function ResultsView({ header = null, meals, handleClickOnMeal }) {
       {/* map the meals */}
       <Box
         sx={{
+          margin: "auto",
+          width: { xs: "auto", md: "90%" },
+          pl: 3,
           display: "flex",
           flexWrap: "wrap",
           gap: 7,

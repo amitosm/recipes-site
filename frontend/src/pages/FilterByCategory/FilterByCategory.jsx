@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import React from "react";
 import PreContent from "../../components/preContent/PreContent";
 import ResultsView from "../../components/ResultsView";
@@ -12,7 +13,7 @@ function FilterByCategory() {
   }
 
   return (
-    <div>
+    <Box sx={{}}>
       <PreContent listOfActions={preContentList} />
       {currentCategory && (
         <ResultsView
@@ -21,7 +22,7 @@ function FilterByCategory() {
           handleClickOnMeal={handleClickOnMeal}
         />
       )}
-    </div>
+    </Box>
   );
 }
 

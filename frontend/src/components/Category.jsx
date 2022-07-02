@@ -21,7 +21,14 @@ function Category({
 
   const open = Boolean(anchorEl);
   return (
-    <ImageListItem onClick={() => handleClick(strCategory)}>
+    <ImageListItem
+      sx={{
+        "&:hover": {
+          cursor: "pointer",
+        },
+      }}
+      onClick={() => handleClick(strCategory)}
+    >
       <img
         src={`${strCategoryThumb}?w=248&fit=crop&auto=format`}
         alt={strCategory}

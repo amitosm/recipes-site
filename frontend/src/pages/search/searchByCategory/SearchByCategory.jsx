@@ -12,7 +12,13 @@ function SearchByCategory() {
 
   return (
     <Box component="div">
-      <Typography variant="h4"> Categories</Typography>
+      <Typography
+        sx={{ width: "80%", mb: 2, mt: 2, textAlign: "center" }}
+        variant="h4"
+      >
+        {" "}
+        Categories
+      </Typography>
       <DisplayCategories
         categories={categories}
         handleCategoryClick={handleCategoryClick}

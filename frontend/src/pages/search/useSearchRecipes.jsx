@@ -21,9 +21,7 @@ function useSearchRecipes() {
     }
   }, [message]);
 
-  return {
-    message,
-  };
+  return {};
 }
 
 export default useSearchRecipes;

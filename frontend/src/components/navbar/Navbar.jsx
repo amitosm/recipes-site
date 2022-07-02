@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import EventNoteIcon from "@mui/icons-material/EventNote";
+import HomeIcon from "@mui/icons-material/Home";
 import useNavbar from "./useNavbar";
 import UserNav from "./UserNav";
 import GuestNav from "./GuestNav";
@@ -34,18 +34,18 @@ export default function MenuAppBar() {
         <Toolbar>
           {/* logo and title */}
           <IconButton
+            component={Link}
+            to="/"
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <EventNoteIcon />
+            <HomeIcon />
           </IconButton>
           <Typography
-            variant="h6"
-            component={Link}
-            to="/"
+            variant="h4"
             sx={{
               textAlign: "center",
               flexGrow: 1,

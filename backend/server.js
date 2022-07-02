@@ -59,11 +59,10 @@ app.use("/api", apiRouter);
 app.use("/db", dbRouter);
 app.use("/auth", authRouter);
 
-
+// handle routing conflicts
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "frontend", "build", "index.html"));
 });
-
 
 
 // connection

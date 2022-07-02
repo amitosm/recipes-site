@@ -51,11 +51,15 @@ function Sidebar({ setNewSearch, activeSearch }) {
       <FormControl>
         {/* search options */}
         <List>
-          <ListSubheader>Search oprtions</ListSubheader>
+          <ListSubheader>Search Options</ListSubheader>
           {/* free text search */}
           <ListItem>
             <InputBase
-              sx={{ ml: 1, flex: 1, justifyContent: "center" }}
+              sx={{
+                ml: 1,
+                flex: 1,
+                justifyContent: "center",
+              }}
               placeholder="Free text"
               value={activeSearch.textInputVal}
               onChange={(e) =>
@@ -66,15 +70,19 @@ function Sidebar({ setNewSearch, activeSearch }) {
                 }))
               }
             />
-            <ListItemIcon onClick={() => handleFreeSearchClick()}>
+            {/* search icon */}
+            <ListItemIcon
+              sx={{ cursor: "pointer" }}
+              onClick={() => handleFreeSearchClick()}
+            >
               <SearchIcon />
             </ListItemIcon>
           </ListItem>
 
           {/* other search options */}
           {[
-            { label: "Search by Category", setSearch: "category" },
-            { label: "Search by A-Z", setSearch: "byLetters" },
+            { label: "Sort by Category", setSearch: "category" },
+            { label: "Sort by A-Z", setSearch: "byLetters" },
           ].map((type, index) => (
             <ListItem
               key={type.label}

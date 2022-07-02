@@ -18,7 +18,7 @@ function GuestNav({ props }) {
           SIGN IN
         </Button>
         <Button variant="inherit" component={Link} to="/register">
-          SING UP
+          SIGN UP
         </Button>
       </Box>
       <IconButton
@@ -46,18 +46,16 @@ function GuestNav({ props }) {
           component={Link}
           sx={{ display: { xs: "flex", md: "none" } }}
           onClick={handleMenuClose}
-          label="Sing in"
+          label="Sign in"
           to="/login"
         />
         <Tab
           component={Link}
           sx={{ display: "flex" }}
           onClick={handleMenuClose}
-          label="Sing up"
+          label="Sign up"
           to="/register"
         />
-        {/* <MenuItem onClick={handleClose}>Sing in</MenuItem>{" "}
-        <MenuItem onClick={handleClose}>Sing up</MenuItem> */}
       </Menu>
     </Box>
   );

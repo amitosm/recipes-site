@@ -8,7 +8,8 @@ function DisplayCategories({ categories, handleCategoryClick }) {
       sx={{
         display: "flex",
         flexWrap: "wrap",
-        width: { xs: "auto", md: "90%" },
+        // width: { xs: "auto", md: "100%" },
+        pl: 3,
       }}
     >
       {categories.map((category) => (
