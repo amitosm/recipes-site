@@ -16,7 +16,6 @@ function SearchByCategory() {
         sx={{ width: "80%", mb: 2, mt: 2, textAlign: "center" }}
         variant="h4"
       >
-        {" "}
         Categories
       </Typography>
       <DisplayCategories

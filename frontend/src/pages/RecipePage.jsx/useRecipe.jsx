@@ -18,7 +18,7 @@ function useRecipe() {
     },
     {
       innerHtml: `${currentMeal?.currentMeal.strCategory}`,
-      path: `/category/${currentMeal?.currentMeal.strCategory}`,
+      path: `../../search/category/${currentMeal?.currentMeal.strCategory}`,
     },
   ];
 

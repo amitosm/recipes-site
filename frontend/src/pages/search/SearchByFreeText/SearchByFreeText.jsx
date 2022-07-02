@@ -2,11 +2,8 @@ import React from "react";
 import useSearchByFreeText from "./useSearchByFreeText";
 import ResultsView from "../../../components/ResultsView";
 
-function SearchByFreeText({ text, reRender }) {
-  const { status, currentSearch, handleRecipeClick } = useSearchByFreeText(
-    text,
-    reRender
-  );
+function SearchByFreeText() {
+  const { status, currentSearch, handleRecipeClick } = useSearchByFreeText();
 
   if (status === "loading") {
     return "LOADING";

@@ -16,7 +16,7 @@ function useSearchByCategory() {
   const navigate = useNavigate();
 
   const handleCategoryClick = (category) => {
-    return navigate(`/category/${category}`);
+    navigate(`../../search/category/${category}`);
   };
 
   useEffect(() => {
@@ -27,13 +27,6 @@ function useSearchByCategory() {
       dispatch(fetchCategories());
     }
   });
-
-  // useEffect(() => {
-  //   if (message === "Logged in!") {
-  //     notify("success", message);
-  //     dispatch(setMessage({ message: "" }));
-  //   }
-  // }, [message]);
 
   return {
     categories,

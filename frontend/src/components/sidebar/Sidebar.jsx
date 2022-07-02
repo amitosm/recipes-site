@@ -14,11 +14,14 @@ import MailIcon from "@mui/icons-material/Mail";
 import SearchIcon from "@mui/icons-material/Search";
 import { FormControl, InputBase, ListSubheader } from "@mui/material";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
-function Sidebar({ setNewSearch, activeSearch }) {
+function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [freeText, setFreeText] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     setMobileOpen(false);
@@ -26,23 +29,6 @@ function Sidebar({ setNewSearch, activeSearch }) {
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
-  };
-
-  const handleFilterClick = (searchType) => {
-    setNewSearch((state) => ({
-      ...state,
-      activeSearch: searchType,
-    }));
-    handleDrawerToggle();
-  };
-
-  const handleFreeSearchClick = () => {
-    setNewSearch((state) => ({
-      ...state,
-      reRender: true,
-      activeSearch: "text",
-    }));
-    handleDrawerToggle();
   };
 
   const drawer = (
@@ -61,19 +47,13 @@ function Sidebar({ setNewSearch, activeSearch }) {
                 justifyContent: "center",
               }}
               placeholder="Free text"
-              value={activeSearch.textInputVal}
-              onChange={(e) =>
-                setNewSearch((state) => ({
-                  ...state,
-                  reRender: false,
-                  textInputVal: e.target.value,
-                }))
-              }
+              value={freeText}
+              onChange={(e) => setFreeText(e.target.value)}
             />
             {/* search icon */}
             <ListItemIcon
               sx={{ cursor: "pointer" }}
-              onClick={() => handleFreeSearchClick()}
+              onClick={() => navigate(`/search/freeSearch/${freeText}`)}
             >
               <SearchIcon />
             </ListItemIcon>
@@ -81,13 +61,13 @@ function Sidebar({ setNewSearch, activeSearch }) {
 
           {/* other search options */}
           {[
-            { label: "Sort by Category", setSearch: "category" },
-            { label: "Sort by A-Z", setSearch: "byLetters" },
+            { label: "Sort by Category", setSearch: "categories" },
+            { label: "Sort by A-Z", setSearch: "letters" },
           ].map((type, index) => (
             <ListItem
               key={type.label}
               disablePadding
-              onClick={() => handleFilterClick(type.setSearch)}
+              onClick={() => navigate(`/search/${type.setSearch}`)}
             >
               <ListItemButton>
                 <ListItemIcon>

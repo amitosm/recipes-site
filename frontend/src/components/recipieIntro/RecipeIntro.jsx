@@ -30,11 +30,9 @@ export default function RecipeIntro({ meal, handleClick }) {
         title={meal.strMeal}
       />
 
+      {/* card actions */}
       <CardActions disableSpacing>
         <FavoriteIconComp meal={meal} idMeal={meal.idMeal} key={meal.idMeal} />
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
       </CardActions>
     </Card>
   );

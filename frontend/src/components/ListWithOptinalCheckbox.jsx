@@ -41,12 +41,7 @@ function ListWithOptinalCheckbox({
               </Typography>
             }
             secondary={
-              <Typography
-                // sx={{ display: { xs: "block", md: "inline" } }}
-                component="span"
-                variant="body2"
-                color="text.primary"
-              >
+              <Typography component="span" variant="body2" color="text.primary">
                 {objectToMap[item]}
               </Typography>
             }
