@@ -12,8 +12,6 @@ import {
 } from "@mui/material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import React from "react";
-import { Link } from "react-router-dom";
-import InputAndLabel from "../../components/InputAndLabel";
 import useLogin from "./useLogin";
 
 export default function Login() {
@@ -43,6 +41,7 @@ export default function Login() {
       />
 
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        {/* form  */}
         <Box
           sx={{
             my: 8,
@@ -61,12 +60,7 @@ export default function Login() {
             Sign in
           </Typography>
           {/* form itself */}
-          <Box
-            component="form"
-            noValidate
-            // onSubmit={handleSubmit}
-            sx={{ mt: 1 }}
-          >
+          <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
