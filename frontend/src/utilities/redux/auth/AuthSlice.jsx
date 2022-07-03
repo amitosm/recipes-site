@@ -122,6 +122,20 @@ export const fetchFavorites = createAsyncThunk("fetchFavorites", async () => {
   return response.data;
 });
 
+export const addRecipie = createAsyncThunk("addRecipie", async (args) => {
+  const response = await axios({
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    withCredentials: true,
+    url: `${BASE_URL}/db/addRecipie`,
+    data: args,
+  });
+  console.log(response.data);
+  return response.data;
+});
+
 const initialState = {
   isAuth: false,
   needToCheckAuth: true,
@@ -141,7 +155,7 @@ const authSlice = createSlice({
       state.isAuth = false;
       state.error = null;
       state.user = null;
-      state.favortiesDetails = null;
+      state.favoritesDetails = null;
       state.message = "";
     },
     setMessage: (state, { payload }) => {
@@ -232,8 +246,6 @@ const authSlice = createSlice({
       state.status = "success";
       state.message = payload.message;
       state.user.favorites = payload.data || state.user.favorites;
-
-      // state.needToCheckAuth = true;
     },
     [removeFavorites.rejected]: (state, payload) => {
       state.status = "rejected";
@@ -248,6 +260,16 @@ const authSlice = createSlice({
     [fetchFavorites.fulfilled]: (state, { payload }) => {
       state.status = "success";
       state.favoritesDetails = payload.favorites;
+    },
+    [addRecipie.pending]: (state) => {
+      state.status = "loading";
+      state.error = null;
+      state.message = "";
+    },
+    [addRecipie.fulfilled]: (state, { payload }) => {
+      console.log(payload);
+      state.status = "success";
+      state.message = payload.message;
     },
   },
 });

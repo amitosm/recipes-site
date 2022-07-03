@@ -6,6 +6,7 @@ const {
 } = require("../controllers/mongo.controller");
 const multer = require('multer');
 const Favorites = require("../models/favorites.schema");
+const Recipes = require("../models/recipes.schema");
 
 
 router.post("/addUser", multer().none(), (req, res) => {
@@ -121,4 +122,25 @@ router.get("/getAllFavorites", async (req, res) => {
     }
 })
 
+router.post('/addRecipie', async (req, res) => {
+    try {
+        const recipe = await Recipes.findOneAndUpdate({
+            userId: req.session.passport.user
+        }, {
+            $addToSet: {
+                recipes: req.body
+            }
+        }, {
+            new: true,
+            upsert: true
+        });
+        res.status(200).json({
+            message: 'added recipie'
+        });
+    } catch (err) {
+        res.status(500).json({
+            message: 'error'
+        });
+    }
+})
 module.exports = router;

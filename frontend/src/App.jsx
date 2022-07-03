@@ -23,7 +23,6 @@ export default function App() {
       <Router>
         <Navbar />
         <Routes>
-          {/* <Route path="/" element={<Search initSearch={"category"} />}></Route> */}
           <Route path="/search" element={<Search initSearch={"category"} />}>
             <Route path="letters" element={<SearchByLetters />} />
             <Route path="categories" element={<SearchByCategory />} />
@@ -34,11 +33,9 @@ export default function App() {
             ></Route>
             <Route path="meal/:mealId" element={<Recipie />}></Route>
           </Route>
-
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/favorites" element={<Favorites />}></Route>
-
           <Route path="/meal/:mealId" element={<Recipie />}></Route>
           <Route path="/myRecipes/:username" element={<MyRecipes />}></Route>
 

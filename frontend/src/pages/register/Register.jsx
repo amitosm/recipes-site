@@ -1,4 +1,3 @@
-import React from "react";
 import useRegister from "./useRegister";
 import {
   Paper,

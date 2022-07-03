@@ -5,6 +5,7 @@ const {
     fetchMealById,
     fetchMealsFreeSearch,
     fetchMealsByLetter,
+    fetchAPIAreas,
 } = require("../controllers/api.controller");
 const getCleanObj = require("../utilities/dataManipulation");
 
@@ -13,6 +14,15 @@ router.get("/categories", async (req, res) => {
     try {
         const categories = await fetchAPIcategories();
         res.status(200).json(categories)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+router.get("/areas", async (req, res) => {
+    try {
+        const areas = await fetchAPIAreas();
+        res.status(200).json(areas)
     } catch (err) {
         res.status(500).json(err)
     }

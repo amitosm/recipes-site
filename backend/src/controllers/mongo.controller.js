@@ -1,5 +1,6 @@
 const User = require("../models/user.schema");
-const Favorites = require("../models/favorites.schema");
+const Recipies = require("../models/recipes.schema");
+
 const {
     genPassword
 } = require("../utilities/crypto");
@@ -24,9 +25,6 @@ const createUser = async (user) => {
     }
 }
 
-const createFavorite = async (meal) => {
-
-}
 
 module.exports = {
     createUser

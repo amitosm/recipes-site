@@ -13,7 +13,7 @@ function FilterByCategory() {
   }
 
   return (
-    <Box sx={{}}>
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
       <PreContent listOfActions={preContentList} />
       {currentCategory && (
         <ResultsView

@@ -69,9 +69,23 @@ export const searchByLetter = createAsyncThunk(
   }
 );
 
+export const fetchAreas = createAsyncThunk("api/areas", async () => {
+  const response = await axios({
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    withCredentials: true,
+    url: `${BASE_URL}/api/areas`,
+  });
+  console.log(response.data);
+  return response.data;
+});
+
 const initialState = {
   status: "idle",
   categories: [],
+  areas: [],
   currentCategory: null,
   currentSearch: null,
   currentMeal: null,
@@ -146,6 +160,19 @@ const apiDataSlice = createSlice({
       state.status = "success";
     },
     [searchByLetter.rejected]: (state, payload) => {
+      state.status = "failed";
+      state.error = payload;
+    },
+    [fetchAreas.pending]: (state) => {
+      state.status = "loading";
+      state.currentSearch = null;
+      state.error = null;
+    },
+    [fetchAreas.fulfilled]: (state, { payload }) => {
+      state.areas = payload;
+      state.status = "success";
+    },
+    [fetchAreas.rejected]: (state, payload) => {
       state.status = "failed";
       state.error = payload;
     },

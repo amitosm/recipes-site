@@ -11,6 +11,16 @@ const fetchAPIcategories = async () => {
   }
 };
 
+const fetchAPIAreas = async () => {
+  try {
+    const areas = await axios.get("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
+    return areas.data.meals
+  } catch (error) {
+    console.log("api fetch error:");
+    console.log(error);
+  }
+};
+
 const fetchAPIcategory = async (categoryName) => {
   try {
 
@@ -61,4 +71,5 @@ module.exports = {
   fetchMealById,
   fetchMealsFreeSearch,
   fetchMealsByLetter,
+  fetchAPIAreas,
 }
