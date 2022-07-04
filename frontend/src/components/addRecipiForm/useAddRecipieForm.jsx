@@ -11,7 +11,6 @@ function useAddRecipieForm() {
   const [validationMsg, setValidationMsg] = useState("");
   const { categories, areas, status } = useSelector((state) => state.data);
   const dispatch = useDispatch();
-
   const [form, setForm] = useState({
     idMeal: uuid(),
     strMeal: "",
@@ -22,13 +21,14 @@ function useAddRecipieForm() {
   });
 
   useEffect(() => {
+    // fetch data
     if (!categories.length && status !== "loading") {
       dispatch(fetchCategories());
     }
     if (!areas.length && status !== "loading") {
       dispatch(fetchAreas());
     }
-  }, [areas, categories]);
+  }, [areas, categories, dispatch, status]);
 
   const checkFilledInputs = (form) => {
     // return false if any of the inputs are empty.

@@ -6,13 +6,7 @@ import React from "react";
 
 // responsive design for logged users.
 function UserNav({ props }) {
-  const {
-    handleMenuClose,
-    handleMenuOpen,
-    userMenuOpen,
-    handleLogout,
-    username,
-  } = props;
+  const { handleMenuClose, handleMenuOpen, userMenuOpen, handleLogout } = props;
   return (
     <Box variant="div" sx={{ display: "flex" }}>
       <Box sx={{ display: { xs: "none", md: "flex" } }}>
@@ -24,11 +18,7 @@ function UserNav({ props }) {
         >
           Favorites
         </Button>
-        <Button
-          variant="inherit"
-          component={Link}
-          to={`/myRecipes/${username}`}
-        >
+        <Button variant="inherit" component={Link} to={`/myRecipes/`}>
           My Recipes
         </Button>
       </Box>
@@ -78,7 +68,7 @@ function UserNav({ props }) {
           sx={{ display: { xs: "flex", md: "none" } }}
           onClick={handleMenuClose}
           label="My Recipes"
-          to={`/myRecipes/:${username}`}
+          to={`/myRecipes`}
         />
         <Tab
           component={Link}

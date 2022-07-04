@@ -2,7 +2,8 @@ const router = require("express").Router();
 const User = require("../models/user.schema");
 
 const {
-    createUser
+    createUser,
+    addRecipie
 } = require("../controllers/mongo.controller");
 const multer = require('multer');
 const Favorites = require("../models/favorites.schema");
@@ -124,16 +125,7 @@ router.get("/getAllFavorites", async (req, res) => {
 
 router.post('/addRecipie', async (req, res) => {
     try {
-        const recipe = await Recipes.findOneAndUpdate({
-            userId: req.session.passport.user
-        }, {
-            $addToSet: {
-                recipes: req.body
-            }
-        }, {
-            new: true,
-            upsert: true
-        });
+        const createdRecipe = await addRecipie(req.body, req.session.passport.user);
         res.status(200).json({
             message: 'added recipie'
         });
@@ -143,4 +135,23 @@ router.post('/addRecipie', async (req, res) => {
         });
     }
 })
+
+router.get('/userRecipes', async (req, res) => {
+    try {
+        const userRecipes = await Recipes.findOne({
+            userId: req.session.passport.user
+        }).select({
+            recipes: 1,
+            _id: 0
+        })
+        res.status(200).json(userRecipes || {
+            recipes: []
+        });
+    } catch (err) {
+        res.status(500).json({
+            recipes: []
+        });
+    }
+})
+
 module.exports = router;

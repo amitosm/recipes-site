@@ -15,8 +15,6 @@ function Search() {
       }}
     >
       <Sidebar />
-      {/* determinants what component to render */}
-      {/* {switchRender(activeSearch.activeSearch)} */}
       <Outlet />
     </Box>
   );

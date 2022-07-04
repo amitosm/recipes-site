@@ -4,7 +4,10 @@ const Recipies = require("../models/recipes.schema");
 const {
     genPassword
 } = require("../utilities/crypto");
-
+const {
+    formatTheIngredients
+} = require("../utilities/dataManipulation");
+const Recipes = require("../models/recipes.schema");
 
 
 const createUser = async (user) => {
@@ -25,7 +28,36 @@ const createUser = async (user) => {
     }
 }
 
+const addRecipie = async (recipe, userId) => {
+    const {
+        strIngredientAndMeasure,
+        ...currentMeal
+    } = recipe;
+    currentMeal.strMealThumb = "https://m.media-amazon.com/images/I/61+WeH5OQZL.jpg";
+    const ingredientAndMeasure = formatTheIngredients(strIngredientAndMeasure);
+    const recipeForDB = {
+        currentMeal,
+        ingredientAndMeasure
+    }
+    try {
+        const newRecipe = await Recipes.findOneAndUpdate({
+            userId: userId,
+        }, {
+            $addToSet: {
+                recipes: recipeForDB
+            }
+        }, {
+            new: true,
+            upsert: true
+        });
+        return newRecipe;
+    } catch (err) {
+        throw (err)
+    }
+}
+
 
 module.exports = {
-    createUser
+    createUser,
+    addRecipie
 }

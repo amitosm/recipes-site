@@ -6,7 +6,6 @@ import {
   CardMedia,
 } from "@mui/material";
 
-import React from "react";
 import ListWithOptinalCheckbox from "./ListWithOptinalCheckbox";
 import { Box } from "@mui/system";
 import FavoriteIconComp from "./favoriteIcon/FavoriteIcon";

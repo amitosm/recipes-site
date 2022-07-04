@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { checkIsAuth, logout } from "../../utilities/redux/auth/AuthSlice";
 
 function useNavbar() {
-  const { isAuth, user, needToCheckAuth } = useSelector((state) => state.auth);
+  const { isAuth, needToCheckAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
@@ -11,7 +11,7 @@ function useNavbar() {
     if (needToCheckAuth) {
       dispatch(checkIsAuth());
     }
-  }, [needToCheckAuth]);
+  }, [needToCheckAuth, dispatch]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -32,7 +32,6 @@ function useNavbar() {
     handleMenuOpen,
     handleMenuClose,
     handleLogout,
-    username: user?.username || null,
   };
 }
 

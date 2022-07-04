@@ -16,7 +16,6 @@ export default function MenuAppBar() {
     handleMenuOpen,
     handleMenuClose,
     handleLogout,
-    username,
   } = useNavbar();
 
   // props for Usernav\ GuestNav
@@ -25,7 +24,6 @@ export default function MenuAppBar() {
     handleMenuOpen,
     userMenuOpen,
     handleLogout,
-    username,
   };
 
   return (

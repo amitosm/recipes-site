@@ -16,6 +16,8 @@ import { Box } from "@mui/material";
 import SearchByLetters from "./pages/search/searchByLetter/SearchByLetters";
 import SearchByCategory from "./pages/search/searchByCategory/SearchByCategory";
 import SearchByFreeText from "./pages/search/SearchByFreeText/SearchByFreeText";
+import AddRecipie from "./pages/myRecipes/addRecipie/AddRecipie";
+import UserRecipes from "./pages/myRecipes/userRecipe/UserRecipes";
 
 export default function App() {
   return (
@@ -37,7 +39,10 @@ export default function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/favorites" element={<Favorites />}></Route>
           <Route path="/meal/:mealId" element={<Recipie />}></Route>
-          <Route path="/myRecipes/:username" element={<MyRecipes />}></Route>
+          <Route path="/myRecipes" element={<MyRecipes />}>
+            <Route path="add" element={<AddRecipie />}></Route>
+            <Route path=":mealName" element={<UserRecipes />}></Route>
+          </Route>
 
           {/* default route when starting the app */}
           <Route

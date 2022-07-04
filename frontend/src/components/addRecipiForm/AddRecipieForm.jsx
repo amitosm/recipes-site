@@ -29,7 +29,7 @@ function AddRecipieForm({ header }) {
   } = useAddRecipieForm();
 
   return (
-    <Card>
+    <Card className="addRecipieForm--container">
       <CardContent>
         {/* header */}
         <Box sx={{ textAlign: "center", mb: 4 }}>

@@ -7,7 +7,9 @@ const {
     fetchMealsByLetter,
     fetchAPIAreas,
 } = require("../controllers/api.controller");
-const getCleanObj = require("../utilities/dataManipulation");
+const {
+    getCleanObject,
+} = require("../utilities/dataManipulation");
 
 
 router.get("/categories", async (req, res) => {
@@ -46,12 +48,13 @@ router.get("/meal/:mealName", async (req, res) => {
     try {
         const mealName = req.params.mealName;
         const mealDetails = await fetchMealById(mealName);
-        const ingredientAndMeasure = getCleanObj(mealDetails.meals[0], "strIngredient", "strMeasure")
+        const ingredientAndMeasure = getCleanObject(mealDetails.meals[0], "strIngredient", "strMeasure")
         res.status(200).json({
             currentMeal: mealDetails.meals[0],
             ingredientAndMeasure: ingredientAndMeasure
         })
     } catch (err) {
+        console.log(err);
         res.status(500).json(err)
     }
 })

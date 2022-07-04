@@ -27,4 +27,15 @@ const createCombineObject = (originalObj, listOfProps, baseUrl) => {
     return resultsObj;
 };
 
-module.exports = getCleanObject;
+const formatTheIngredients = (ingredientsAndMeasureArray) => {
+    const results = {};
+    ingredientsAndMeasureArray.map((element) => {
+        results[element.ingredient] = element.measure;
+    })
+    return results;
+}
+
+module.exports = {
+    getCleanObject,
+    formatTheIngredients
+};

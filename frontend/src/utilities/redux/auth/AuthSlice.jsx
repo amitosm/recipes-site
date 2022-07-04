@@ -132,9 +132,23 @@ export const addRecipie = createAsyncThunk("addRecipie", async (args) => {
     url: `${BASE_URL}/db/addRecipie`,
     data: args,
   });
-  console.log(response.data);
   return response.data;
 });
+
+export const fetchUserRecipes = createAsyncThunk(
+  "fetchUserRecipes",
+  async () => {
+    const response = await axios({
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+      url: `${BASE_URL}/db/userRecipes`,
+    });
+    return response.data.recipes;
+  }
+);
 
 const initialState = {
   isAuth: false,
@@ -143,6 +157,7 @@ const initialState = {
   error: null,
   user: null,
   favoritesDetails: null,
+  userRecipes: [],
   message: "",
 };
 
@@ -155,6 +170,7 @@ const authSlice = createSlice({
       state.isAuth = false;
       state.error = null;
       state.user = null;
+      state.userRecipes = [];
       state.favoritesDetails = null;
       state.message = "";
     },
@@ -189,6 +205,7 @@ const authSlice = createSlice({
       state.user = payload.user;
       state.isAuth = payload.isAuth;
       state.message = "Logged in!";
+      state.userRecipes = [];
     },
     [login.rejected]: (state, payload) => {
       state.status = "rejected";
@@ -206,6 +223,7 @@ const authSlice = createSlice({
       state.isAuth = false;
       state.user = null;
       state.favoritesDetails = null;
+      state.userRecipes = [];
     },
     [logout.rejected]: (state, payload) => {
       state.test2 = "rejected";
@@ -267,9 +285,18 @@ const authSlice = createSlice({
       state.message = "";
     },
     [addRecipie.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.status = "success";
       state.message = payload.message;
+    },
+    [fetchUserRecipes.pending]: (state) => {
+      state.status = "loading";
+      state.error = null;
+      state.message = "";
+    },
+    [fetchUserRecipes.fulfilled]: (state, { payload }) => {
+      state.status = "success";
+      state.userRecipes = payload;
+      state.message = "userRecipes";
     },
   },
 });
