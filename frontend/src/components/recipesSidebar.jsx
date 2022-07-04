@@ -36,6 +36,8 @@ function RecipesSidebar({ addHandler }) {
     console.log(userRecipes);
     if (message !== "userRecipes" && status !== "loading") {
       dispatch(fetchUserRecipes());
+    } else if (message === "added recipe") {
+      dispatch(fetchUserRecipes());
     }
   }, [message]);
 

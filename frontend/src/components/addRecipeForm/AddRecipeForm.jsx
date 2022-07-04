@@ -13,23 +13,23 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import useAddRecipieForm from "./useAddRecipieForm";
+import useAddRecipeForm from "./useAddRecipeForm";
 
-function AddRecipieForm({ header }) {
+function AddRecipeForm({ header }) {
   const {
     form,
     handleDyncamicInputChange,
     addNewInput,
     removeInput,
-    handleAddRecipie,
+    handleAddRecipe,
     setForm,
     validationMsg,
     categories,
     areas,
-  } = useAddRecipieForm();
+  } = useAddRecipeForm();
 
   return (
-    <Card className="addRecipieForm--container">
+    <Card className="addRecipeForm--container">
       <CardContent>
         {/* header */}
         <Box sx={{ textAlign: "center", mb: 4 }}>
@@ -185,7 +185,7 @@ function AddRecipieForm({ header }) {
           size="large"
           sx={{ mt: 2 }}
           variant="contained"
-          onClick={handleAddRecipie}
+          onClick={handleAddRecipe}
         >
           {header}
         </Button>
@@ -194,4 +194,4 @@ function AddRecipieForm({ header }) {
   );
 }
 
-export default AddRecipieForm;
+export default AddRecipeForm;

@@ -10,7 +10,7 @@ import ListWithOptinalCheckbox from "./ListWithOptinalCheckbox";
 import { Box } from "@mui/system";
 import FavoriteIconComp from "./favoriteIcon/FavoriteIcon";
 
-function RecipieFullDetails({ currentMeal }) {
+function RecipeFullDetails({ currentMeal, favorites = true }) {
   return (
     <Card sx={{ boxShadow: "none" }}>
       {/* headers */}
@@ -33,14 +33,16 @@ function RecipieFullDetails({ currentMeal }) {
         alt="Paella dish"
       />
       {/* recipe actions */}
-      <CardActions>
-        {currentMeal && (
-          <FavoriteIconComp
-            meal={currentMeal.currentMeal}
-            idMeal={currentMeal.currentMeal.idMeal}
-          />
-        )}
-      </CardActions>
+      {favorites && (
+        <CardActions>
+          {currentMeal && (
+            <FavoriteIconComp
+              meal={currentMeal.currentMeal}
+              idMeal={currentMeal.currentMeal.idMeal}
+            />
+          )}
+        </CardActions>
+      )}
       {/* ingredients and instructions*/}
       {currentMeal && (
         <CardContent
@@ -72,4 +74,4 @@ function RecipieFullDetails({ currentMeal }) {
   );
 }
 
-export default RecipieFullDetails;
+export default RecipeFullDetails;

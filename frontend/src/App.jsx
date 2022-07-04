@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Favorites from "./pages/favorites/Favorites";
 import Search from "./pages/search/SearchRecipe";
-import Recipie from "./pages/RecipePage.jsx/Recipie";
+import Recipe from "./pages/RecipePage/Recipe";
 import FilterByCategory from "./pages/FilterByCategory/FilterByCategory";
 import Register from "./pages/register/Register";
 import MyRecipes from "./pages/myRecipes/MyRecipes";
@@ -16,7 +16,7 @@ import { Box } from "@mui/material";
 import SearchByLetters from "./pages/search/searchByLetter/SearchByLetters";
 import SearchByCategory from "./pages/search/searchByCategory/SearchByCategory";
 import SearchByFreeText from "./pages/search/SearchByFreeText/SearchByFreeText";
-import AddRecipie from "./pages/myRecipes/addRecipie/AddRecipie";
+import AddRecipe from "./pages/myRecipes/addRecipes/AddRecipe";
 import UserRecipes from "./pages/myRecipes/userRecipe/UserRecipes";
 
 export default function App() {
@@ -33,14 +33,14 @@ export default function App() {
               path="category/:categoryName"
               element={<FilterByCategory />}
             ></Route>
-            <Route path="meal/:mealId" element={<Recipie />}></Route>
+            <Route path="meal/:mealId" element={<Recipe />}></Route>
           </Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/favorites" element={<Favorites />}></Route>
-          <Route path="/meal/:mealId" element={<Recipie />}></Route>
+          <Route path="/meal/:mealId" element={<Recipe />}></Route>
           <Route path="/myRecipes" element={<MyRecipes />}>
-            <Route path="add" element={<AddRecipie />}></Route>
+            <Route path="add" element={<AddRecipe />}></Route>
             <Route path=":mealName" element={<UserRecipes />}></Route>
           </Route>
 

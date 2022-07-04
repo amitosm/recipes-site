@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import RecipeIntro from "./recipieIntro/RecipeIntro";
+import RecipeIntro from "./recipeIntro/RecipeIntro";
 
 function ResultsView({ header = null, meals, handleClickOnMeal }) {
   return (

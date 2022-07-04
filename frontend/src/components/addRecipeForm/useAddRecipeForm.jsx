@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
-import { addRecipie } from "../../utilities/redux/auth/AuthSlice";
+import { addRecipe } from "../../utilities/redux/auth/AuthSlice";
 import {
   fetchCategories,
   fetchAreas,
 } from "../../utilities/redux/dataApi/DataSlice";
 
-function useAddRecipieForm() {
+function useAddRecipeForm() {
   const [validationMsg, setValidationMsg] = useState("");
   const { categories, areas, status } = useSelector((state) => state.data);
   const dispatch = useDispatch();
@@ -41,9 +41,9 @@ function useAddRecipieForm() {
     return true;
   };
 
-  const handleAddRecipie = () => {
+  const handleAddRecipe = () => {
     if (checkFilledInputs(form)) {
-      dispatch(addRecipie(form));
+      dispatch(addRecipe(form));
     }
   };
 
@@ -74,11 +74,11 @@ function useAddRecipieForm() {
     handleDyncamicInputChange,
     addNewInput,
     removeInput,
-    handleAddRecipie,
+    handleAddRecipe,
     validationMsg,
     categories,
     areas,
   };
 }
 
-export default useAddRecipieForm;
+export default useAddRecipeForm;

@@ -122,14 +122,14 @@ export const fetchFavorites = createAsyncThunk("fetchFavorites", async () => {
   return response.data;
 });
 
-export const addRecipie = createAsyncThunk("addRecipie", async (args) => {
+export const addRecipe = createAsyncThunk("addRecipe", async (args) => {
   const response = await axios({
     method: "post",
     headers: {
       "Content-Type": "application/json",
     },
     withCredentials: true,
-    url: `${BASE_URL}/db/addRecipie`,
+    url: `${BASE_URL}/db/addRecipe`,
     data: args,
   });
   return response.data;
@@ -279,12 +279,12 @@ const authSlice = createSlice({
       state.status = "success";
       state.favoritesDetails = payload.favorites;
     },
-    [addRecipie.pending]: (state) => {
+    [addRecipe.pending]: (state) => {
       state.status = "loading";
       state.error = null;
       state.message = "";
     },
-    [addRecipie.fulfilled]: (state, { payload }) => {
+    [addRecipe.fulfilled]: (state, { payload }) => {
       state.status = "success";
       state.message = payload.message;
     },

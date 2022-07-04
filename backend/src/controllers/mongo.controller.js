@@ -1,5 +1,5 @@
 const User = require("../models/user.schema");
-const Recipies = require("../models/recipes.schema");
+const recipes = require("../models/recipes.schema");
 
 const {
     genPassword
@@ -28,7 +28,7 @@ const createUser = async (user) => {
     }
 }
 
-const addRecipie = async (recipe, userId) => {
+const addRecipe = async (recipe, userId) => {
     const {
         strIngredientAndMeasure,
         ...currentMeal
@@ -59,5 +59,5 @@ const addRecipie = async (recipe, userId) => {
 
 module.exports = {
     createUser,
-    addRecipie
+    addRecipe
 }

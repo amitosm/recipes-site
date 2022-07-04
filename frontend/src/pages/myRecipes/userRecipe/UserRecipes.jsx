@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import RecipieFullDetails from "../../../components/RecipeFullDetails";
+import RecipeFullDetails from "../../../components/RecipeFullDetails";
 import { useState } from "react";
 
 function UserRecipes() {
@@ -19,7 +19,7 @@ function UserRecipes() {
   }, [mealName]);
 
   //   return <div>test</div>;
-  return <RecipieFullDetails currentMeal={currentMeal} />;
+  return <RecipeFullDetails currentMeal={currentMeal} favorites={false} />;
 }
 
 export default UserRecipes;

@@ -3,7 +3,7 @@ const User = require("../models/user.schema");
 
 const {
     createUser,
-    addRecipie
+    addRecipe
 } = require("../controllers/mongo.controller");
 const multer = require('multer');
 const Favorites = require("../models/favorites.schema");
@@ -117,17 +117,18 @@ router.get("/getAllFavorites", async (req, res) => {
             favorites: []
         });
     } catch (err) {
+        console.log(err)
         res.status(500).json({
             favorites: []
         });
     }
 })
 
-router.post('/addRecipie', async (req, res) => {
+router.post('/addRecipe', async (req, res) => {
     try {
-        const createdRecipe = await addRecipie(req.body, req.session.passport.user);
+        const createdRecipe = await addRecipe(req.body, req.session.passport.user);
         res.status(200).json({
-            message: 'added recipie'
+            message: 'added recipe'
         });
     } catch (err) {
         res.status(500).json({

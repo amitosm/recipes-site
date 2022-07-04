@@ -1,9 +1,9 @@
 import React from "react";
 import useRecipe from "./useRecipe";
-import RecipieFullDetails from "../../components/RecipeFullDetails";
+import RecipeFullDetails from "../../components/RecipeFullDetails";
 import PreContent from "../../components/preContent/PreContent";
 
-function Recipie() {
+function Recipe() {
   const { status, currentMeal, preContentList } = useRecipe();
 
   if (status === "loading") {
@@ -13,9 +13,9 @@ function Recipie() {
   return (
     <>
       <PreContent listOfActions={preContentList} />
-      <RecipieFullDetails currentMeal={currentMeal} />
+      <RecipeFullDetails currentMeal={currentMeal} />
     </>
   );
 }
 
-export default Recipie;
+export default Recipe;
