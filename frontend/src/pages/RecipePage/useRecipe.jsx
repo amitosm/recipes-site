@@ -4,10 +4,7 @@ import { fetchMealById } from "../../utilities/redux/dataApi/DataSlice";
 import { useParams } from "react-router-dom";
 
 function useRecipe() {
-  const { status, currentMeal, currentCategory } = useSelector(
-    (state) => state.data
-  );
-
+  const { status, currentMeal } = useSelector((state) => state.data);
   const { mealId } = useParams();
   const dispatch = useDispatch();
 
@@ -24,7 +21,7 @@ function useRecipe() {
 
   useEffect(() => {
     dispatch(fetchMealById(mealId));
-  }, []);
+  }, [mealId, dispatch]);
 
   return { status, currentMeal, preContentList };
 }

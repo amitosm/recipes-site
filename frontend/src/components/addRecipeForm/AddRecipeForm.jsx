@@ -6,14 +6,9 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CancelIcon from "@mui/icons-material/Cancel";
-import {
-  FormControl,
-  IconButton,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { IconButton } from "@mui/material";
 import useAddRecipeForm from "./useAddRecipeForm";
+import SelectWithList from "./SelectWithList";
 
 function AddRecipeForm({ header }) {
   const {
@@ -26,6 +21,8 @@ function AddRecipeForm({ header }) {
     validationMsg,
     categories,
     areas,
+    handleChangeCategory,
+    handleChangeArea,
   } = useAddRecipeForm();
 
   return (
@@ -37,6 +34,7 @@ function AddRecipeForm({ header }) {
             {header}
           </Typography>
         </Box>
+
         {/* form */}
         <Box component="form" noValidate>
           <TextField
@@ -54,61 +52,21 @@ function AddRecipeForm({ header }) {
               }))
             }
           />
-          {/* select for categories and areas */}
-          <FormControl
-            sx={{ minWidth: { md: 252 }, width: { xs: "100%" }, mr: 2 }}
-          >
-            <InputLabel id="select-label">Category</InputLabel>
-
-            <Select
-              fullWidth
-              labelId="select-label"
-              id="select-category"
-              value={form.strCategory}
-              label="Category"
-              onChange={(e) =>
-                setForm((state) => ({
-                  ...state,
-                  strCategory: e.target.value,
-                }))
-              }
-            >
-              {categories.map((category) => (
-                <MenuItem
-                  key={category.idCategory}
-                  value={category.strCategory}
-                >
-                  {category.strCategory}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          {/*  select for areas */}
-          <FormControl
-            sx={{ minWidth: { md: 252 }, width: { xs: "100%" }, mt: { xs: 2 } }}
-          >
-            <InputLabel id="select-label">Area</InputLabel>
-            <Select
-              labelId="select-label"
-              id="select-category"
-              value={form.strArea}
-              label="Category"
-              onChange={(e) =>
-                setForm((state) => ({
-                  ...state,
-                  strArea: e.target.value,
-                }))
-              }
-            >
-              {areas.map((area) => (
-                <MenuItem key={area.strArea} value={area.strArea}>
-                  {area.strArea}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
+          <SelectWithList
+            header={"Category"}
+            currValue={form.strCategory}
+            handleChange={handleChangeCategory}
+            valuesList={categories}
+            keyName={"strCategory"}
+          />
+          <SelectWithList
+            header={"Areas"}
+            currValue={form.strArea}
+            handleChange={handleChangeArea}
+            valuesList={areas}
+            keyName={"strArea"}
+            styles={{ mt: 2 }}
+          />
           {/* dynamic IngredientAndMeasure rows */}
           {form.strIngredientAndMeasure.map((row, index) => {
             const { ingredirnt, measure } = row;

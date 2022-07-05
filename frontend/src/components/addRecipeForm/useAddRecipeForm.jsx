@@ -68,6 +68,20 @@ function useAddRecipeForm() {
     setForm((state) => ({ ...state, strIngredientAndMeasure: list }));
   };
 
+  const handleChangeCategory = (e) => {
+    setForm((state) => ({
+      ...state,
+      strCategory: e.target.value,
+    }));
+  };
+
+  const handleChangeArea = (e) => {
+    setForm((state) => ({
+      ...state,
+      strArea: e.target.value,
+    }));
+  };
+
   return {
     form,
     setForm,
@@ -78,6 +92,8 @@ function useAddRecipeForm() {
     validationMsg,
     categories,
     areas,
+    handleChangeCategory,
+    handleChangeArea,
   };
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import RecipeFullDetails from "../../../components/RecipeFullDetails";
 import { useState } from "react";
 
@@ -14,9 +14,8 @@ function UserRecipes() {
     const meal = userRecipes.find((recipe) => {
       return recipe.currentMeal.strMeal === mealName;
     });
-    console.log(currentMeal);
     setCurrentMeal(meal);
-  }, [mealName]);
+  }, [mealName, userRecipes]);
 
   //   return <div>test</div>;
   return <RecipeFullDetails currentMeal={currentMeal} favorites={false} />;
