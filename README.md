@@ -34,11 +34,11 @@ Live site : [Recipes site link](https://recipes-forever.herokuapp.com/search/cat
 
 - Searching recipes by category, text
 - Sort recipes A-Z
-- Register/sing up - including authentication
+- Register/sign up - including authentication
 
 User Features-
 
-- Add /remove recipe to favorites
+- Add/remove recipe to favorites
 - Add new personal recipe
 
 ## Feedback
