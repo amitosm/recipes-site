@@ -62,6 +62,7 @@ function RecipeFullDetails({ currentMeal, favorites = true }) {
           </Box>
           <Box>
             <ListWithOptinalCheckbox
+              primaryText={false}
               objectToMap={{
                 instructions: currentMeal.currentMeal.strInstructions,
               }}

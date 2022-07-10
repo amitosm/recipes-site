@@ -1,17 +1,10 @@
-import { ImageList } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 import Category from "./Category";
 
 function DisplayCategories({ categories, handleCategoryClick }) {
   return (
-    <ImageList
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        // width: { xs: "auto", md: "100%" },
-        pl: 3,
-      }}
-    >
+    <Grid container spacing={2} gap={"30px"} ml={"20px"}>
       {categories.map((category) => (
         <Category
           key={category.idCategory}
@@ -21,7 +14,7 @@ function DisplayCategories({ categories, handleCategoryClick }) {
           handleClick={handleCategoryClick}
         />
       ))}
-    </ImageList>
+    </Grid>
   );
 }
 

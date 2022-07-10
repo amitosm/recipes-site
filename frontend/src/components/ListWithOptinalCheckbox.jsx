@@ -13,6 +13,7 @@ function ListWithOptinalCheckbox({
   objectToMap,
   listHeader,
   checkbox = false,
+  primaryText = true,
 }) {
   return (
     <List
@@ -31,14 +32,16 @@ function ListWithOptinalCheckbox({
           {checkbox && <Checkbox />}
           <ListItemText
             primary={
-              <Typography
-                sx={{ display: "inline" }}
-                component="span"
-                variant="body1"
-                color="text.primary"
-              >
-                {item},
-              </Typography>
+              primaryText ? (
+                <Typography
+                  sx={{ display: "inline" }}
+                  component="span"
+                  variant="body1"
+                  color="text.primary"
+                >
+                  {item},
+                </Typography>
+              ) : null
             }
             secondary={
               <Typography component="span" variant="body2" color="text.primary">

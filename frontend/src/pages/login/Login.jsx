@@ -13,13 +13,14 @@ import {
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import React from "react";
 import useLogin from "./useLogin";
+import Loading from "../../components/Loading";
 
 export default function Login() {
   const { userForm, handleInputChange, dispatchLogin, status, validationMsg } =
     useLogin();
 
   if (status === "loading") {
-    return "Loading.";
+    return <Loading />;
   }
 
   return (

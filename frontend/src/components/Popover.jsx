@@ -25,7 +25,9 @@ export default function HoverPopover({
       }}
       onClose={handlePopoverClose}
     >
-      <Typography sx={{ p: 1, maxWidth: "280px" }}>{popoverText}.</Typography>
+      <Typography sx={{ p: 1, maxWidth: "280px", maxHeight: "300px" }}>
+        {popoverText}.
+      </Typography>
     </Popover>
   );
 }

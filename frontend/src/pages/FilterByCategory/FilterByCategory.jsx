@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
+import Loading from "../../components/Loading";
 import PreContent from "../../components/preContent/PreContent";
 import ResultsView from "../../components/ResultsView";
 import useFilterByCategory from "./useFilterByCategory";
@@ -9,7 +10,7 @@ function FilterByCategory() {
     useFilterByCategory();
 
   if (status === "loading") {
-    return "LOADING";
+    return <Loading />;
   }
 
   return (

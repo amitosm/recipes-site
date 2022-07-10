@@ -49,13 +49,7 @@ function UserNav({ props }) {
           label="Home"
           to="/"
         />
-        <Tab
-          component={Link}
-          sx={{ display: "flex" }}
-          onClick={handleMenuClose}
-          label="Settings"
-          to="/"
-        />
+
         <Tab
           component={Link}
           sx={{ display: { xs: "flex", md: "none" } }}

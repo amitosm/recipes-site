@@ -9,6 +9,7 @@ import {
   Select,
   Typography,
 } from "@mui/material";
+import Loading from "../../../components/Loading";
 
 function SearchByLetters() {
   const {
@@ -18,11 +19,10 @@ function SearchByLetters() {
     currentSearch,
     handleLetterClick,
     letter,
-    handleChange,
   } = useSearchByLetters();
 
   if (status === "loading") {
-    return "LOADING";
+    return <Loading />;
   }
 
   return (
@@ -60,7 +60,7 @@ function SearchByLetters() {
               }}
               key={letter}
             >
-              {letter.toLocaleUpperCase()}{" "}
+              {letter.toLocaleUpperCase()}
             </Typography>
           ))}
         </Box>

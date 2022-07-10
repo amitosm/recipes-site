@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
@@ -12,8 +12,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import SearchIcon from "@mui/icons-material/Search";
-import { FormControl, InputBase, ListSubheader } from "@mui/material";
-import { useEffect } from "react";
+import { FormControl, InputBase } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -37,7 +36,6 @@ function Sidebar() {
       <FormControl>
         {/* search options */}
         <List>
-          <ListSubheader>Search Options</ListSubheader>
           {/* free text search */}
           <ListItem>
             <InputBase
@@ -46,7 +44,7 @@ function Sidebar() {
                 flex: 1,
                 justifyContent: "center",
               }}
-              placeholder="Free text"
+              placeholder="Search text"
               value={freeText}
               onChange={(e) => setFreeText(e.target.value)}
             />
